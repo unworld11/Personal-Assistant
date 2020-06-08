@@ -1,35 +1,57 @@
-// Assistant.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <windows.h>
 #include <shellapi.h>
-#include <string>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+// Globals
+using namespace std;
+void clrscr()
+{
+    system("cls");
+}
+
+// Function Prototypes
+void launchSpotify();     // Using Pascal method to name the functions
+void launchAccuWeather();
 
 int main()
 {
-    using namespace std;
+    // system("sety raw");
+    clrscr(); // Clearing the screen every time main() in called
+    char ch;
     cout << "\tHey \n\tI am your Assistant but I'm still learning so if you encounter any bugs , forgive me";
-
     cout << "\n\tHere is some stuff i can currently do ";
-    cout << "\n\t 1. Open Spotify\n\t 2. Tell you the current weather";
-    cout << "\nWhat do you want me to do ?";
-    while (true) {
-        int c;
-        cout << "\n\n\tInput Number : ";
-        cin >> c;
-        if (c == 1) {
-            /*opening link*/
-
-            ShellExecute(0, 0, "https://open.spotify.com/", 0, 0, SW_SHOW);
-        }
-        else if (c == 2) {
-
-            ShellExecute(0, 0, "https://www.accuweather.com/", 0, 0, SW_SHOW);
-        }
-        else {
-            cout << "\nI don't mean to be rude but your input is wrong.\n\n\n ";
+    cout << "\n\t 1. Open Spotify (s)\n\t 2. Tell you the current weather (w)\n\t 3. Exit (q)" ;
+    cout << "\nWhat do you want me to do ? :";
+    ch = getchar();
+        switch (ch) {
+            case 's' :
+                cout << "\n\t Launching Spotify on Web";
+                launchSpotify();
+                break;
+            case 'w' :
+                cout << "\n\t Launching AccuWeather on Web";
+                launchAccuWeather();
+                break;
+            case 'q' :
+                cout << "\n\t Exiting";
+                exit(1);
+            default: cout << "\n\t Invalid input, please try again";
+                     main(); // This is a recursive call
         }
     }
-};
 
+
+void launchSpotify() {
+    clrscr();
+    ShellExecute(0, 0, "https://open.spotify.com/", 0, 0, SW_SHOW);
+    main(); // Going back to the main() function
+}
+
+void launchAccuWeather() {
+    clrscr();
+    ShellExecute(0, 0, "https://www.accuweather.com/", 0, 0, SW_SHOW);
+    main(); // Going back to the main() function
+}

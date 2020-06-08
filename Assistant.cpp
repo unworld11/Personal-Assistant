@@ -21,11 +21,11 @@ int main()
         if (c == 1) {
             /*opening link*/
 
-            ShellExecute(0, 0, L"https://open.spotify.com/", 0, 0, SW_SHOW);
+            ShellExecute(0, 0, "https://open.spotify.com/", 0, 0, SW_SHOW);
         }
         else if (c == 2) {
 
-            ShellExecute(0, 0, L"https://www.accuweather.com/", 0, 0, SW_SHOW);
+            ShellExecute(0, 0, "https://www.accuweather.com/", 0, 0, SW_SHOW);
         }
         else {
             cout << "\nI don't mean to be rude but your input is wrong.\n\n\n ";
